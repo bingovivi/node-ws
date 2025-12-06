@@ -1,722 +1,669 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml"  xml:lang="zh-CN" lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Network - Protect Earth</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary: #2e7d32;
-            --secondary: #4caf50;
-            --accent: #8bc34a;
-            --light: #e8f5e9;
-            --dark: #1b5e20;
-            --text: #333333;
-            --white: #ffffff;
-        }
-
-        body {
-            background-color: var(--light);
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        header {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: var(--white);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-
-        .logo i {
-            font-size: 2rem;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 2rem;
-        }
-
-        nav ul li a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 0;
-            position: relative;
-        }
-
-        nav ul li a:hover {
-            color: var(--accent);
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--accent);
-            color: var(--white);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        section {
-            padding: 5rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent);
-            border-radius: 2px;
-        }
-
-        .section-title p {
-            color: var(--text);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-img {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-img img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .about-img:hover img {
-            transform: scale(1.05);
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 2rem 1rem;
-            background-color: var(--white);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .stat-item i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .stat-item h3 {
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-item p {
-            color: var(--text);
-        }
-
-        .initiatives {
-            background-color: var(--white);
-        }
-
-        .initiatives-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .initiative-card {
-            background-color: var(--light);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .initiative-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .initiative-img {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .initiative-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .initiative-card:hover .initiative-img img {
-            transform: scale(1.1);
-        }
-
-        .initiative-content {
-            padding: 1.5rem;
-        }
-
-        .initiative-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .initiative-content p {
-            margin-bottom: 1.5rem;
-        }
-
-        .cta {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: var(--white);
-            text-align: center;
-            padding: 5rem 0;
-        }
-
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta .btn {
-            background-color: var(--white);
-            color: var(--primary);
-        }
-
-        .cta .btn:hover {
-            background-color: var(--accent);
-            color: var(--white);
-        }
-
-        footer {
-            background-color: var(--dark);
-            color: var(--white);
-            padding: 3rem 0 1rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--accent);
-        }
-
-        .footer-column p {
-            margin-bottom: 1rem;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links li a {
-            color: var(--light);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .footer-links li a:hover {
-            color: var(--accent);
-            padding-left: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: var(--white);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background-color: var(--accent);
-            transform: translateY(-5px);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .mobile-menu {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        @media (max-width: 992px) {
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .initiatives-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--primary);
-                flex-direction: column;
-                padding: 1rem 0;
-                text-align: center;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            }
-            
-            nav ul.active {
-                display: flex;
-            }
-            
-            nav ul li {
-                margin: 0;
-                padding: 0.8rem 0;
-            }
-            
-            .mobile-menu {
-                display: block;
-            }
-            
-            .initiatives-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Animation for stats counter */
-        .counter {
-            transition: all 0.5s ease;
-        }
-    </style>
+<title>雲端網校</title>
+<meta name="keywords" content="雲端網校" />
+<meta name="description" content="雲端網校" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="source/plugin/it618_video/template/mall/images/common.css?v8.1.31" rel="stylesheet" type="text/css" />
+<script src="source/plugin/it618_video/js/jquery.js?76560575725528f2bdfbd01883ae335f" type="12221185148614d8afecd31e-text/javascript"></script>
+<script src="source/plugin/it618_video/template/mall/js/jquery.autocomplete.min.js" type="12221185148614d8afecd31e-text/javascript"></script>
+<script src="source/plugin/it618_video/template/mall/js/common.js" type="12221185148614d8afecd31e-text/javascript"></script>
+<script src="source/plugin/it618_video/template/mall/js/base.js" type="12221185148614d8afecd31e-text/javascript"></script>
+<script src="source/plugin/it618_video/js/MSClass.js" type="12221185148614d8afecd31e-text/javascript"></script>
+<script src="source/plugin/it618_video/js/layer/layer.js" type="12221185148614d8afecd31e-text/javascript"></script>
+<script src="source/plugin/it618_video/js/laydate/laydate.js" type="12221185148614d8afecd31e-text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="source/plugin/it618_video/kindeditor/themes/default/default.css" />
+<script src="source/plugin/it618_video/kindeditor/kindeditor-min.js?b937c4a9fa493ec45610c962312da84f" type="12221185148614d8afecd31e-text/javascript" charset="utf-8"></script>
+<script src="source/plugin/it618_video/kindeditor/lang/zh_CN.js" type="12221185148614d8afecd31e-text/javascript" charset="utf-8"></script>
+<!--[if IE 6]>
+<script src="source/plugin/it618_video/template/mall/js/iepng.js" type="text/javascript"></script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script src="source/plugin/it618_video/template/mall/js/html5v3.js" type="text/javascript"></script>
+<![endif]-->
+<style>
+.search-cen input.sctext{border-color:#ff865e}
+.search-cen input.scbut,.sjrz input.scbut{background-color:#ff865e}
+#nav{background-color:#ff865e}
+#nav a.current,#nav a:hover{background-color:#ff865e}
+.sort-title{border-color:#ff865e}
+.sort,.sort-lottery{border-color:#ff865e}
+body { background-color: #fef6ea!important;}
+.floor-more a {   background-color: #f8d5c3!important;}
+.search-cen input.scbut, .sjrz input.scbut {  background-color: #999999!important;}
+.search-cen input.sctext { border-color: #999;}
+.scroll-block a.gotop {border-radius: 50%;  background-color: #f77205!important;}
+.recommend-title span.current { background-color: #ff865e!important;}
+.sf-link li a.current, .sf-location-ul li.own-position a, .sf-select-content li a.current {
+background-color: #f8d5c3!important;}
+.sf-link li a:hover, .sf-select-content li a:hover { background-color: #609d9a!important;}
+</style>
+ 
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container nav-container">
-            <div class="logo">
-                <i class="fas fa-seedling"></i>
-                <span>Green Network</span>
-            </div>
-            <nav>
-                <div class="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#initiatives">Initiatives</a></li>
-                    <li><a href="#get-involved">Get Involved</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1>Protect Our Planet, Preserve Our Future</h1>
-            <p>Join the global movement to create a sustainable world through conservation, education, and community action.</p>
-            <a href="#get-involved" class="btn">Join Our Network</a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>About Green Network</h2>
-                <p>We are a global community dedicated to environmental protection and sustainable development.</p>
-            </div>
-            <div class="about-content">
-                <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Team planting trees">
-                </div>
-                <div class="about-text">
-                    <h3>Our Mission</h3>
-                    <p>Green Network is committed to creating a sustainable future by protecting natural ecosystems, promoting renewable energy, and empowering communities to take environmental action.</p>
-                    <p>Founded in 2010, we've grown from a small grassroots organization to an international network with over 50,000 members across 120 countries.</p>
-                    <p>Our approach combines scientific research, community engagement, and policy advocacy to address the most pressing environmental challenges of our time.</p>
-                    <a href="#" class="btn">Learn More</a>
-                </div>
-            </div>
-            <div class="stats">
-                <div class="stat-item">
-                    <i class="fas fa-tree"></i>
-                    <h3 class="counter" data-target="2500000">0</h3>
-                    <p>Trees Planted</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-users"></i>
-                    <h3 class="counter" data-target="50000">0</h3>
-                    <p>Active Members</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-globe-americas"></i>
-                    <h3 class="counter" data-target="120">0</h3>
-                    <p>Countries Reached</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-recycle"></i>
-                    <h3 class="counter" data-target="1500">0</h3>
-                    <p>Cleanup Projects</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Initiatives Section -->
-    <section class="initiatives" id="initiatives">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Initiatives</h2>
-                <p>Discover the key programs and projects we're implementing to protect our planet.</p>
-            </div>
-            <div class="initiatives-grid">
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://dialogue.earth/content/uploads/2021/04/lessons-from-the-rush-to-reforest-china-dialogue-2400x1599.jpg" alt="Reforestation">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Global Reforestation</h3>
-                        <p>Planting millions of trees worldwide to restore ecosystems, combat climate change, and protect biodiversity.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Ocean Conservation">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Ocean Conservation</h3>
-                        <p>Protecting marine ecosystems, reducing plastic pollution, and promoting sustainable fishing practices.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Renewable Energy">
-                    </div>
-                    <div class="initiative-content">
-                        <h3>Renewable Energy</h3>
-                        <p>Promoting solar, wind, and other clean energy sources to reduce dependence on fossil fuels.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta" id="get-involved">
-        <div class="container">
-            <h2>Join Our Global Movement</h2>
-            <p>Together, we can create a sustainable future for generations to come. Every action counts, no matter how small.</p>
-            <a href="#" class="btn">Become a Member</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Green Network</h3>
-                    <p>We are dedicated to protecting our planet through collaborative action, education, and sustainable solutions.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#initiatives">Initiatives</a></li>
-                        <li><a href="#get-involved">Get Involved</a></li>
-                        <li><a href="#contact">Contact</a></li>
+<!-- header -->
+<header id="header" class="0d636b7d04871fc0decb3f66420f01c3">
+    <div class="header-topbg">
+        <div class="header-top cl">
+        	<ul class="hdiul cl">
+               <li>
+	<a target="_blank" href="https://www.accd.info">ACCD官網</a> 
+</li>
+<li>
+	<a target="_blank" href="forum.php">敘事浸泡社群</a> 
+</li>
+<li>
+	<a target="_blank" href="forum.php?mod=guide">貼文分享</a> 
+</li>            </ul>
+            <ul class="login cl">
+					<li class="dropdown dropdown-account">
+                    <p class="textwarp">
+                        <em class="text">幫助中心</em>
+                        <i class="triangle"></i>
+                        <em class="account-num" style="display:none;"></em>
+					</p>
+                    <ul class="htul">
+						<li><a href="plugin.php?id=it618_video:page&pid=1">支付方式</a></li>
                     </ul>
+                </li>
+					
+					<li><a class="login-link" href="member.php?mod=logging&action=login" style="color:#333">[登入]</a></li>
+					<li><a class="login-link" href="member.php?mod=register" style="color:#333">[註冊]</a></li>    
+				   </ul>        </div>
+        <div id="playpj" style="display:none"></div><div id="hfplaypj" style="display:none"></div>
+    </div>
+     
+    <div class="header-bottom cl">
+        <div class="logo">
+            <h1> 亞洲創意對話中心 - 雲端網校 </h1>
+<a href="plugin.php?id=it618_video:index"><img src="accd/img/ACCD-logo-rgb.png" height="77" alt="歡聚後花園，快樂生活" title="歡聚後花園，快樂生活" /></a>        </div>
+
+        <div class="search" >
+            <form action="plugin.php?id=it618_video:search" method="post" id="searchform" onSubmit="if (!window.__cfRLUnblockHandlers) return false; return new_checksubmit()" data-cf-modified-12221185148614d8afecd31e-="">
+    <div class="search-cen">
+    <span class="scvalue">創意敘事</span>
+    <input type="text" id="sw" name="sw" class="sctext ac_input " lang="zh-CN" autocomplete="off" value="" />
+    <input type="submit" class="scbut" value="搜尋"/>
+    </div>
+    <div class="search-hot newga ga">
+    	<a href="plugin.php?id=it618_video:search&sw=%E5%89%B5%E6%84%8F%E6%95%98%E4%BA%8B">創意敘事</a><a href="plugin.php?id=it618_video:search&sw=%E5%B0%8D%E8%A9%B1">對話</a><a href="plugin.php?id=it618_video:search&sw=%E5%9C%8B%E9%9A%9B%E8%AB%96%E5%A3%87++">國際論壇  </a>                </div>
+            </form>
+</div>
+        
+                        <div class="sjrz"><input type="button" class="scbut renzheng" value="講師入駐"/></div>
+                    </div>
+</header>
+<!-- header end -->
+
+<!-- nav -->
+<nav id="nav" class="newga ga">
+    <div class="nav-content cl">
+        <a href="plugin.php?id=it618_video:list&class1=5">國際大師班</a><a href="plugin.php?id=it618_video:list&class1=2">Podcast</a><a href="plugin.php?id=it618_video:list&class1=1">「創意敘事：對話與督導」</a><a href="plugin.php?id=it618_video:list&class1=3">創意對話國際論壇</a><a href="plugin.php?id=it618_video:list&class1=4">專題精選</a>    </div>
+</nav>
+<!-- nav end -->
+
+<div class="sortnav-warp">
+<div class="sort-nav sort-hide newga ga">
+<h3 class="sort-title"><span>查看全部分類<i class="sort-titleicon"></i></span></h3>
+<div class="sort-cen">
+        <div class="sort">
+						<div class="sort-menu"><em class="sort-icon"></em><a class="title" href="plugin.php?id=it618_video:list&class1=5">國際大師班</a><span style="color:#999;line-height:26px">(1)</span></div>
+						<div class="sort-con">
+							<div class="sort-con-left">
+								<h4><a href="plugin.php?id=it618_video:list&class1=5">國際大師班</a></h4>
+								<ul class="sort-link02 cl">
+									<li><a href="plugin.php?id=it618_video:list&class1=5&class2=9">影片</a></li><li><a href="plugin.php?id=it618_video:list&class1=5&class2=10">音檔</a></li>
+								</ul>
+							</div>
+						  </div>
+					</div><div class="sort">
+						<div class="sort-menu"><em class="sort-icon"></em><a class="title" href="plugin.php?id=it618_video:list&class1=2">Podcast</a><span style="color:#999;line-height:26px">(1)</span></div>
+						<div class="sort-con">
+							<div class="sort-con-left">
+								<h4><a href="plugin.php?id=it618_video:list&class1=2">Podcast</a></h4>
+								<ul class="sort-link02 cl">
+									<li><a href="plugin.php?id=it618_video:list&class1=2&class2=3">影片</a></li><li><a href="plugin.php?id=it618_video:list&class1=2&class2=4">音檔</a></li>
+								</ul>
+							</div>
+						  </div>
+					</div><div class="sort">
+						<div class="sort-menu"><em class="sort-icon"></em><a class="title" href="plugin.php?id=it618_video:list&class1=1">「創意敘事：對話與督導」</a><span style="color:#999;line-height:26px">(6)</span></div>
+						<div class="sort-con">
+							<div class="sort-con-left">
+								<h4><a href="plugin.php?id=it618_video:list&class1=1">「創意敘事：對話與督導」</a></h4>
+								<ul class="sort-link02 cl">
+									<li><a href="plugin.php?id=it618_video:list&class1=1&class2=1">影片</a></li><li><a href="plugin.php?id=it618_video:list&class1=1&class2=2">音檔</a></li>
+								</ul>
+							</div>
+						  </div>
+					</div><div class="sort">
+						<div class="sort-menu"><em class="sort-icon"></em><a class="title" href="plugin.php?id=it618_video:list&class1=3">創意對話國際論壇</a><span style="color:#999;line-height:26px">(0)</span></div>
+						<div class="sort-con">
+							<div class="sort-con-left">
+								<h4><a href="plugin.php?id=it618_video:list&class1=3">創意對話國際論壇</a></h4>
+								<ul class="sort-link02 cl">
+									<li><a href="plugin.php?id=it618_video:list&class1=3&class2=5">影片</a></li><li><a href="plugin.php?id=it618_video:list&class1=3&class2=6">音檔</a></li>
+								</ul>
+							</div>
+						  </div>
+					</div><div class="sort">
+						<div class="sort-menu"><em class="sort-icon"></em><a class="title" href="plugin.php?id=it618_video:list&class1=4">專題精選</a><span style="color:#999;line-height:26px">(0)</span></div>
+						<div class="sort-con">
+							<div class="sort-con-left">
+								<h4><a href="plugin.php?id=it618_video:list&class1=4">專題精選</a></h4>
+								<ul class="sort-link02 cl">
+									<li><a href="plugin.php?id=it618_video:list&class1=4&class2=7">影片</a></li><li><a href="plugin.php?id=it618_video:list&class1=4&class2=8">音檔</a></li>
+								</ul>
+							</div>
+						  </div>
+					</div><div class="sort-lottery">
+					<div class="sort-menu" style="height:0;padding:0; margin:0"></div>
+				 </div></div>
+</div>
+</div>
+
+<!-- main -->
+<main id="main">
+<div class="index-main cl">
+<div class="index-content">
+<div class="index-filter">
+<div class="filter-strip newga ga">
+<h3><i class="filter-icon icon03"></i><span>熱門分類</span></h3>
+<div class="filter-link">
+<ul>
+                            <li><a href="plugin.php?id=it618_video:list&class1=&class2=0"></a></li></ul>
+</div>
+</div>
+                
+                <div class="index-top-swiper">
+                    <div class="swiper-container">
+                        <div id="gonggao_warp">
+                            
+                            <div id="gonggao_bd" style="margin-left:18px;">
+                                <div id="gonggao_item">
+                                    <table>
+                                        <tr><td><a href="https://www.accd.info/accd-2022/" target="_blank" title="「創意敘事: 對話實踐與督導」線上課程報名開始啦"><div>「創意敘事: 對話實踐與督導」線上課程報名開始啦</div></a></td></tr>                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-wrapper">
+                        	<li class="swiper-slide"><img src="accd/img/sl01.jpg" width="940" height="358" /></li><li class="swiper-slide"><img src="accd/img/sl02.jpg" width="940" height="358" /></li><li class="swiper-slide"><img src="accd/img/sl03.jpg" width="940" height="358" /></li>                        </div>
+                        <div class="pagination pagination-top"></div>
+                        <div class="button-prev page-btn swiper-button-prev"></div>
+                        <div class="button-next page-btn swiper-button-next"></div>
+                    </div>
                 </div>
-                <div class="footer-column">
-                    <h3>Our Programs</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Reforestation</a></li>
-                        <li><a href="#">Ocean Cleanup</a></li>
-                        <li><a href="#">Wildlife Protection</a></li>
-                        <li><a href="#">Climate Education</a></li>
-                        <li><a href="#">Sustainable Agriculture</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Copper Creek Drive, New York</p>
-                    <p><i class="fas fa-phone"></i> +1 (312) 171-0771</p>
-                    <p><i class="fas fa-envelope"></i> support@greennetwork.org</p>
+</div>
+</div>
+        <div class="sidebar-warp">
+        	<div class="right-swiper-1">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <li class="swiper-slide"><img src="accd/img/Right_Side_UP1.jpg" width="223" height="231" /></li><li class="swiper-slide"><img src="accd/img/Right_Side_UP2.jpg" width="223" height="231" /></li>                    </div>
+                    <div class="pagination pagination-right-1"></div>
+                    <div class="button-prev page-btn swiper-button-prev"></div>
+                    <div class="button-next page-btn swiper-button-next"></div>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 Green Network. All rights reserved.</p>
+            <div class="right-swiper-2">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <li class="swiper-slide"><img src="accd/img/Righ side_Down.jpg" width="223" height="231" /></li>                    </div>
+                    <div class="pagination pagination-right-2"></div>
+                    <div class="button-prev page-btn swiper-button-prev"></div>
+                    <div class="button-next page-btn swiper-button-next"></div>
+                </div>
             </div>
         </div>
-    </footer>
+</div>
+    
+<div class="recommend-goods">
+			<div class="recommend-title">
+				<span class="current" id="span-re-newjf" onclick="if (!window.__cfRLUnblockHandlers) return false; tabCutover(this,'re-newjf');get_home_goods('newgoods');" title="最新發文的課程" data-cf-modified-12221185148614d8afecd31e-="">最新課程<i></i></span><span id="span-re-hotjf" onclick="if (!window.__cfRLUnblockHandlers) return false; tabCutover(this,'re-hotjf');get_home_goods('hotgoods');" title="瀏覽量最多的課程" data-cf-modified-12221185148614d8afecd31e-="">人氣課程<i></i></span><span id="span-rc-new" onclick="if (!window.__cfRLUnblockHandlers) return false; tabCutover(this,'rc-new');get_home_goods('zjsalegoods');" title="最近剛購買的課程" data-cf-modified-12221185148614d8afecd31e-="">最近購買<i></i></span><span id="span-rc-week" onclick="if (!window.__cfRLUnblockHandlers) return false; tabCutover(this,'re-week');get_home_goods('weeksalegoods');" title="限時搶購促銷活動課程" data-cf-modified-12221185148614d8afecd31e-="">限時搶購<i></i></span>
+			</div>
+			<div class="recommend-content">
+				<div class="re-newjf" id="home_goods_newgoods"></div><div class="re-hotjf" id="home_goods_hotgoods"></div><div class="rc-new" id="home_goods_zjsalegoods"></div><div class="re-week" id="home_goods_weeksalegoods"></div>
+			</div>
+			</div>    
+        
+      
+    
+    
+<div class="index-floor">
+							<h2 class="index-floor-title">
+								<a href="plugin.php?id=it618_video:list&class1=5">國際大師班</a>
+								<div class="fr">
+									
+									<a href="plugin.php?id=it618_video:list&class1=5" target="_blank">全部&nbsp;<em>&gt;&gt;</em></a>
+								</div>
+							</h2>
+							<div class="index-goods-list cl">
+								<div class="index-goods">
+									
+									<a class="index-goods-img" href="plugin.php?id=it618_video:product&pid=11" target="_blank">
+										<img class="dynload lsSwitchload" imgsrc="source/plugin/it618_video/kindeditor/data/shop1/smallimages/goods11_2af797c408eb4b702d7566ceec66b69e.jpg?2af797" src="source/plugin/it618_video/images/a.gif" alt="國際大師班"/>
+										<span class="index-goods-place" title="亞洲對話創意中心">亞洲對話創意中心<br>亞洲對話創意中心</span>
+									</a>
+									<h3>
+										<a class="index-goods-name" href="plugin.php?id=it618_video:product&pid=11" target="_blank" title="國際大師班">國際大師班</a>
+										<a class="index-goods-text" href="plugin.php?id=it618_video:product&pid=11" target="_blank" title="國際大師班">國際大師班</a>
+										<span style="color:#999;line-height:35px;font-weight:normal;font-size:12px"><span style="float:right"><font color=red>1</font>人在學</span>7課時</span>
+									</h3>
+									<div class="index-goods-info">
+										<span class="price" style="color:#390;font-size:20px">免費</span>
+									</div>
+								</div>
+							</div>
+							<div class="floor-more"><a href="plugin.php?id=it618_video:list&class1=5">查看更多國際大師班&nbsp;&gt;&gt;</a></div>
+						</div><div class="index-floor">
+							<h2 class="index-floor-title">
+								<a href="plugin.php?id=it618_video:list&class1=2">Podcast</a>
+								<div class="fr">
+									
+									<a href="plugin.php?id=it618_video:list&class1=2" target="_blank">全部&nbsp;<em>&gt;&gt;</em></a>
+								</div>
+							</h2>
+							<div class="index-goods-list cl">
+								<div class="index-goods">
+									
+									<a class="index-goods-img" href="plugin.php?id=it618_video:product&pid=7" target="_blank">
+										<img class="dynload lsSwitchload" imgsrc="source/plugin/it618_video/kindeditor/data/shop1/smallimages/goods7_dead8fe8aade08d34b080880e13ff471.jpg?dead8f" src="source/plugin/it618_video/images/a.gif" alt="熙琄老師怎麼想？"/>
+										<span class="index-goods-place" title="亞洲對話創意中心">亞洲對話創意中心<br>亞洲對話創意中心</span>
+									</a>
+									<h3>
+										<a class="index-goods-name" href="plugin.php?id=it618_video:product&pid=7" target="_blank" title="熙琄老師怎麼想？">熙琄老師怎麼想？</a>
+										<a class="index-goods-text" href="plugin.php?id=it618_video:product&pid=7" target="_blank" title="熙琄老師怎麼想？">熙琄老師怎麼想？</a>
+										<span style="color:#999;line-height:35px;font-weight:normal;font-size:12px"><span style="float:right"><font color=red>34</font>人在學</span><img src="source/plugin/it618_video/images/vip.png" style="vertical-align:middle;margin-top:-3px;margin-right:3px">52課時</span>
+									</h3>
+									<div class="index-goods-info">
+										<span class="price" style="padding:0;padding-right:3px"><em> </em>999<em class="jfname">起</em></span>
+									</div>
+								</div>
+							</div>
+							<div class="floor-more"><a href="plugin.php?id=it618_video:list&class1=2">查看更多Podcast&nbsp;&gt;&gt;</a></div>
+						</div><div class="index-floor">
+							<h2 class="index-floor-title">
+								<a href="plugin.php?id=it618_video:list&class1=1">「創意敘事：對話與督導」</a>
+								<div class="fr">
+									
+									<a href="plugin.php?id=it618_video:list&class1=1" target="_blank">全部&nbsp;<em>&gt;&gt;</em></a>
+								</div>
+							</h2>
+							<div class="index-goods-list cl">
+								<div class="index-goods">
+									
+									<a class="index-goods-img" href="plugin.php?id=it618_video:product&pid=9" target="_blank">
+										<img class="dynload lsSwitchload" imgsrc="source/plugin/it618_video/kindeditor/data/shop1/smallimages/goods9_c850bb0c6542a539458ce00540a7aa8e.png?c850bb" src="source/plugin/it618_video/images/a.gif" alt="2023年秋季班「創意敘事成長營」"/>
+										<span class="index-goods-place" title="亞洲對話創意中心">亞洲對話創意中心<br>亞洲對話創意中心</span>
+									</a>
+									<h3>
+										<a class="index-goods-name" href="plugin.php?id=it618_video:product&pid=9" target="_blank" title="2023年秋季班「創意敘事成長營」">2023年秋季班「創意敘事成長營」</a>
+										<a class="index-goods-text" href="plugin.php?id=it618_video:product&pid=9" target="_blank" title="【2023年秋季班「創意敘事成長營」】">【2023年秋季班「創意敘事成長營」】</a>
+										<span style="color:#999;line-height:35px;font-weight:normal;font-size:12px"><span style="float:right"><font color=red>19</font>人在學</span><img src="source/plugin/it618_video/images/vip.png" style="vertical-align:middle;margin-top:-3px;margin-right:3px">135課時</span>
+									</h3>
+									<div class="index-goods-info">
+										<span class="price" style="padding:0;padding-right:3px"><em> </em>1999<em class="jfname">起</em></span>
+									</div>
+								</div><div class="index-goods">
+									
+									<a class="index-goods-img" href="plugin.php?id=it618_video:product&pid=8" target="_blank">
+										<img class="dynload lsSwitchload" imgsrc="source/plugin/it618_video/kindeditor/data/shop1/smallimages/goods8_4c6c7eec73c4089595e6ec15145c5381.jpg?4c6c7e" src="source/plugin/it618_video/images/a.gif" alt="講師專區"/>
+										<span class="index-goods-place" title="亞洲對話創意中心">亞洲對話創意中心<br>亞洲對話創意中心</span>
+									</a>
+									<h3>
+										<a class="index-goods-name" href="plugin.php?id=it618_video:product&pid=8" target="_blank" title="講師專區">講師專區</a>
+										<a class="index-goods-text" href="plugin.php?id=it618_video:product&pid=8" target="_blank" title="創意敘事成長營教務處：【客座講師】">創意敘事成長營教務處：【客座講師】</a>
+										<span style="color:#999;line-height:35px;font-weight:normal;font-size:12px"><span style="float:right"><font color=red>19</font>人在學</span><img src="source/plugin/it618_video/images/vip.png" style="vertical-align:middle;margin-top:-3px;margin-right:3px">141課時</span>
+									</h3>
+									<div class="index-goods-info">
+										<span class="price" style="padding:0;padding-right:3px"><em> </em>10400<em class="jfname">起</em></span>
+									</div>
+								</div><div class="index-goods">
+									
+									<a class="index-goods-img" href="plugin.php?id=it618_video:product&pid=5" target="_blank">
+										<img class="dynload lsSwitchload" imgsrc="source/plugin/it618_video/kindeditor/data/shop1/smallimages/goods5_52264c649f4dbfe6af80304f740730eb.png?52264c" src="source/plugin/it618_video/images/a.gif" alt="2023年5月「創意敘事成長營」"/>
+										<span class="index-goods-place" title="亞洲對話創意中心">亞洲對話創意中心<br>亞洲對話創意中心</span>
+									</a>
+									<h3>
+										<a class="index-goods-name" href="plugin.php?id=it618_video:product&pid=5" target="_blank" title="2023年5月「創意敘事成長營」">2023年5月「創意敘事成長營」</a>
+										<a class="index-goods-text" href="plugin.php?id=it618_video:product&pid=5" target="_blank" title="2023年5月「創意敘事成長營」線上課程">2023年5月「創意敘事成長營」線上課程</a>
+										<span style="color:#999;line-height:35px;font-weight:normal;font-size:12px"><span style="float:right"><font color=red>3</font>人在學</span><img src="source/plugin/it618_video/images/vip.png" style="vertical-align:middle;margin-top:-3px;margin-right:3px">135課時</span>
+									</h3>
+									<div class="index-goods-info">
+										<span class="price" style="padding:0;padding-right:3px"><em> </em>20800</span>
+									</div>
+								</div><div class="index-goods">
+									
+									<a class="index-goods-img" href="plugin.php?id=it618_video:product&pid=4" target="_blank">
+										<img class="dynload lsSwitchload" imgsrc="source/plugin/it618_video/kindeditor/data/shop1/smallimages/goods4_6437c4f36fd76c215c1f35b7f1e85e6c.png?6437c4" src="source/plugin/it618_video/images/a.gif" alt="2023年4月「創意敘事成長營」"/>
+										<span class="index-goods-place" title="亞洲對話創意中心">亞洲對話創意中心<br>亞洲對話創意中心</span>
+									</a>
+									<h3>
+										<a class="index-goods-name" href="plugin.php?id=it618_video:product&pid=4" target="_blank" title="2023年4月「創意敘事成長營」">2023年4月「創意敘事成長營」</a>
+										<a class="index-goods-text" href="plugin.php?id=it618_video:product&pid=4" target="_blank" title="2023年4月「創意敘事成長營」線上課程">2023年4月「創意敘事成長營」線上課程</a>
+										<span style="color:#999;line-height:35px;font-weight:normal;font-size:12px"><span style="float:right"><font color=red>2</font>人在學</span><img src="source/plugin/it618_video/images/vip.png" style="vertical-align:middle;margin-top:-3px;margin-right:3px">140課時</span>
+									</h3>
+									<div class="index-goods-info">
+										<span class="price" style="padding:0;padding-right:3px"><em> </em>20800</span>
+									</div>
+								</div><div class="index-goods">
+									
+									<a class="index-goods-img" href="plugin.php?id=it618_video:product&pid=3" target="_blank">
+										<img class="dynload lsSwitchload" imgsrc="source/plugin/it618_video/kindeditor/data/shop1/smallimages/goods3_70c810fc425183bb6f115dc975684e42.png?70c810" src="source/plugin/it618_video/images/a.gif" alt="2023年2月「創意敘事成長營」"/>
+										<span class="index-goods-place" title="亞洲對話創意中心">亞洲對話創意中心<br>亞洲對話創意中心</span>
+									</a>
+									<h3>
+										<a class="index-goods-name" href="plugin.php?id=it618_video:product&pid=3" target="_blank" title="2023年2月「創意敘事成長營」">2023年2月「創意敘事成長營」</a>
+										<a class="index-goods-text" href="plugin.php?id=it618_video:product&pid=3" target="_blank" title="2023年2月「創意敘事成長營」線上課程">2023年2月「創意敘事成長營」線上課程</a>
+										<span style="color:#999;line-height:35px;font-weight:normal;font-size:12px"><span style="float:right"><font color=red>7</font>人在學</span><img src="source/plugin/it618_video/images/vip.png" style="vertical-align:middle;margin-top:-3px;margin-right:3px">146課時</span>
+									</h3>
+									<div class="index-goods-info">
+										<span class="price" style="padding:0;padding-right:3px"><em> </em>20800</span>
+									</div>
+								</div><div class="index-goods">
+									
+									<a class="index-goods-img" href="plugin.php?id=it618_video:product&pid=1" target="_blank">
+										<img class="dynload lsSwitchload" imgsrc="source/plugin/it618_video/kindeditor/data/shop1/smallimages/goods1_0162d3f44783dfd0933ff58a06479cf4.png?0162d3" src="source/plugin/it618_video/images/a.gif" alt="「創意敘事成長營」"/>
+										<span class="index-goods-place" title="亞洲對話創意中心">亞洲對話創意中心<br>亞洲對話創意中心</span>
+									</a>
+									<h3>
+										<a class="index-goods-name" href="plugin.php?id=it618_video:product&pid=1" target="_blank" title="「創意敘事成長營」">「創意敘事成長營」</a>
+										<a class="index-goods-text" href="plugin.php?id=it618_video:product&pid=1" target="_blank" title="「創意敘事成長營」線上課程">「創意敘事成長營」線上課程</a>
+										<span style="color:#999;line-height:35px;font-weight:normal;font-size:12px"><span style="float:right"><font color=red>81</font>人在學</span><img src="source/plugin/it618_video/images/vip.png" style="vertical-align:middle;margin-top:-3px;margin-right:3px">143課時</span>
+									</h3>
+									<div class="index-goods-info">
+										<span class="price" style="padding:0;padding-right:3px"><em> </em>20800</span>
+									</div>
+								</div>
+							</div>
+							<div class="floor-more"><a href="plugin.php?id=it618_video:list&class1=1">查看更多「創意敘事：對話與督導」&nbsp;&gt;&gt;</a></div>
+						</div><div class="index-floor">
+							<h2 class="index-floor-title">
+								<a href="plugin.php?id=it618_video:list&class1=3">創意對話國際論壇</a>
+								<div class="fr">
+									
+									<a href="plugin.php?id=it618_video:list&class1=3" target="_blank">全部&nbsp;<em>&gt;&gt;</em></a>
+								</div>
+							</h2>
+							<div class="index-goods-list cl">
+								
+							</div>
+							<div class="floor-more"><a href="plugin.php?id=it618_video:list&class1=3">查看更多創意對話國際論壇&nbsp;&gt;&gt;</a></div>
+						</div><div class="index-floor">
+							<h2 class="index-floor-title">
+								<a href="plugin.php?id=it618_video:list&class1=4">專題精選</a>
+								<div class="fr">
+									
+									<a href="plugin.php?id=it618_video:list&class1=4" target="_blank">全部&nbsp;<em>&gt;&gt;</em></a>
+								</div>
+							</h2>
+							<div class="index-goods-list cl">
+								
+							</div>
+							<div class="floor-more"><a href="plugin.php?id=it618_video:list&class1=4">查看更多專題精選&nbsp;&gt;&gt;</a></div>
+						</div>
+</main>
 
-    <script>
-        // Mobile Menu Toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('active');
-        });
+<script src="source/plugin/it618_video/js/swiper.min.js" type="12221185148614d8afecd31e-text/javascript"></script>
+<link rel="stylesheet" href="source/plugin/it618_video/images/swiper.css">
+<script src="source/plugin/it618_video/js/MSClass.js" type="12221185148614d8afecd31e-text/javascript"></script>
+<script language=javascript type="12221185148614d8afecd31e-text/javascript">
+new it618_Marquee(["gonggao_bd","gonggao_item"],0,1,850,20,20,4000,3000,20);
+var n1=0,n2=0,n3=0,n4=0;
+function get_home_goods(key){
+IT618_VIDEO("#home_goods_"+key).html('<img src="source/plugin/it618_video/wap/images/loading.gif" style="margin-top:60px;margin-left:15px">');
+IT618_VIDEO.get("https://edu.accd.info/plugin.php?id=it618_video:ajax&ac1="+key, {ac:"home_goods"},function (data, textStatus){													
+IT618_VIDEO("#home_goods_"+key).html(data);
+startLsSwitch();
+}, "html");
+}
 
-        // Counter Animation
-        function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
-            const speed = 200; // The lower the slower
-            
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                
-                const inc = target / speed;
-                
-                if(count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(animateCounters, 1);
-                } else {
-                    counter.innerText = target;
-                }
-            });
-        }
+    var banner_swiper = new Swiper('.topbanner .swiper-container', {
+        autoplay: 6000,
+        speed: 300,
+        loop: true,
+        pagination: ".topbanner .pagination-right",
+        paginationClickable: false,
+        autoplayDisableOnInteraction: false
+    });
 
-        // Initialize counters when page loads
-        window.addEventListener('load', animateCounters);
+var top_swiper = new Swiper('.index-top-swiper .swiper-container', {
+        autoplay: 8000,
+        speed: 500,
+        loop: true,
+        effect: "fade",
+        pagination: ".index-top-swiper .pagination-top",
+        paginationClickable: false,
+        autoplayDisableOnInteraction: false
+    });
+    $(".index-top-swiper .button-prev").on("click", function () {
+        top_swiper.swipePrev()
+    })
+    $(".index-top-swiper .button-next").on("click", function () {
+        top_swiper.swipeNext()
+    })
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    document.querySelector('nav ul').classList.remove('active');
-                }
-            });
-        });
-    </script>
+    var right_swiper_1 = new Swiper('.right-swiper-1 .swiper-container', {
+        autoplay: 6000,
+        speed: 400,
+        loop: true,
+        effect: "fade",
+        pagination: ".pagination-right-1",
+        paginationClickable: false,
+        autoplayDisableOnInteraction: false
+    });
+    $(".right-swiper-1 .button-prev").on("click", function () {
+        right_swiper_1.swipePrev()
+    })
+    $(".right-swiper-1 .button-next").on("click", function () {
+        right_swiper_1.swipeNext()
+    })
+
+    var right_swiper_2 = new Swiper('.right-swiper-2 .swiper-container', {
+        autoplay: 6000,
+        speed: 400,
+        loop: true,
+        effect: "fade",
+        pagination: ".pagination-right-2",
+        paginationClickable: false,
+        autoplayDisableOnInteraction: false
+    });
+    $(".right-swiper-2 .button-prev").on("click", function () {
+        right_swiper_2.swipePrev()
+    })
+    $(".right-swiper-2 .button-next").on("click", function () {
+        right_swiper_2.swipeNext()
+    })
+
+    var tracher_swiper = new Swiper('.index-teacher-lists .swiper-container', {
+        autoplay: 5000,
+        speed: 500,
+        loop: true,
+        effect: "fade",
+        paginationClickable: false,
+        autoplayDisableOnInteraction: false,
+        slidesPerView: 5,
+        spaceBetween: 30
+    });
+    $(".index-teacher-lists .button-prev").on("click", function () {
+        tracher_swiper.swipePrev()
+    })
+    $(".index-teacher-lists .button-next").on("click", function () {
+        tracher_swiper.swipeNext()
+    })
+</script>
+
+
+<div class="scroll-block"  id="go-top">     
+    <a href="javascript:void(0);" class="gotop newga ga" ga_t="回到頂部"><i class="scroll-icon"></i></a>
+</div>
+<!-- main end -->
+<!-- footer cf180ccfbf091e6cef8927678b506498 -->
+<footer id="footer">
+<div class="footer-top">
+	<div class="site-info">
+		<dl>
+			<dt>
+				亞洲創意對話中心
+			</dt>
+			<dd>
+				<a href="https://www.accd.info/" rel="nofollow">ACCD官網</a> 
+			</dd>
+			<dd>
+				<a href="https://lin.ee/7j5nUQE" rel="nofollow">Line官方帳號</a> 
+			</dd>
+			<dd>
+				<a href="/cdn-cgi/l/email-protection#19787a7a7d59787a7a7d3770777f76" rel="nofollow">聯絡我們</a> 
+			</dd>
+		</dl>
+		<dl>
+			<dt>
+				捷徑
+			</dt>
+			<dd>
+				<i class="site-icon"></i><a href="#" rel="nofollow">免費試聽</a> 
+			</dd>
+<dd>
+				<i class="site-icon"></i><a href="#" rel="nofollow">訂閱方案</a> 
+			</dd>
+			<dd>
+				<i class="site-icon"></i><a href="plugin.php?id=it618_group:class&cid=2" rel="nofollow">會員體系</a> 
+			</dd>
+			<dd>
+				<i class="site-icon"></i><a href="plugin.php?id=it618_video:page&pid=1" rel="nofollow">支付方式</a> 
+			</dd>
+		</dl>
+		<dl>
+			<dt>
+				常見問題
+			</dt>
+			<dd>
+				<i class="site-icon"></i><a href="https://www.accd.info/qna/" rel="nofollow">Q&A</a> 
+			</dd>
+		</dl>
+		<dl>
+			<dt>
+				敘事浸泡社群
+			</dt>
+			<dd>
+				<i class="site-icon"></i><a href="forum.php" rel="nofollow">敘事浸泡社群</a> 
+			</dd>
+		</dl>
+		<dl>
+			<dt>
+				雲端網校
+			</dt>
+			<dd>
+				<i class="site-icon"></i><a href="https://edu.accd.info" rel="nofollow">雲端網校</a> 
+			</dd>
+		</dl>
+		<div class="code">
+			<br />
+		</div>
+		<div class="clr">
+		</div>
+	</div>
+</div>
+</footer><!-- footer end -->
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="plugin.php?id=it618_video:js" type="12221185148614d8afecd31e-text/javascript"></script>
+
+
+<script type="12221185148614d8afecd31e-text/javascript">tabCutover(document.getElementById("span-re-newjf"),'re-newjf');get_home_goods('newgoods');</script>
+<script type="12221185148614d8afecd31e-text/javascript" src="source/plugin/it618_members/js/layer/layer.js"></script>
+			<script type="12221185148614d8afecd31e-text/javascript" src="source/plugin/it618_credits/js/layer/layer.js"></script>
+			<script type="12221185148614d8afecd31e-text/javascript">			
+			jQuery(document).ready(function() {
+			jQuery("#it618_credits").click(function() {
+				layerindex=layer.open({
+				  type: 2,
+				  title: "<div style='float:left'><img src='source/plugin/it618_credits/images/ico.png' style='vertical-align:middle;margin-right:3px; margin-top:-3px'>我的錢包</div>",
+				  shadeClose: false,
+				  scrollbar: false,
+				  shade:  [0.5, "#393D49"],
+				  maxmin: false,
+				  area: ["868px", "588px"],
+				  content: "plugin.php?id=it618_credits:index",
+				  cancel: function(index, layero){ 
+				  }    
+				});
+			});
+			});
+			function IT618_QB(url) {
+				layerindex=layer.open({
+				  type: 2,
+				  title: "<div style='float:left'><img src='source/plugin/it618_credits/images/ico.png' style='vertical-align:middle;margin-right:3px; margin-top:-3px'>我的錢包</div>",
+				  shadeClose: false,
+				  scrollbar: false,
+				  shade:  [0.5, "#393D49"],
+				  maxmin: false,
+				  area: ["868px", "588px"],
+				  content: url,
+				  cancel: function(index, layero){ 
+				  }    
+				});
+			}
+			</script>
+		<div id="vippaybtn" style="display:none"></div>
+			<script type="12221185148614d8afecd31e-text/javascript" src="source/plugin/it618_credits/js/layer/layer.js"></script>
+			<script type="12221185148614d8afecd31e-text/javascript">			
+			jQuery(document).ready(function() {
+			jQuery("#vippaybtn").click(function() {
+				layerindex=layer.open({
+				  type: 2,
+				  title: "<div style='float:left'><img src='source/plugin/it618_credits/images/ico.png' style='vertical-align:middle;margin-right:3px; margin-top:-3px'>我的錢包</div>",
+				  shadeClose: false,
+				  scrollbar: false,
+				  shade:  [0.5, "#393D49"],
+				  maxmin: false,
+				  area: ["868px", "588px"],
+				  content: "plugin.php?id=it618_credits:do&dotype=buygroup",
+				  cancel: function(index, layero){ 
+				  }    
+				});
+			});
+			});
+			function IT618_QB(url) {
+				layerindex=layer.open({
+				  type: 2,
+				  title: "<div style='float:left'><img src='source/plugin/it618_credits/images/ico.png' style='vertical-align:middle;margin-right:3px; margin-top:-3px'>我的錢包</div>",
+				  shadeClose: false,
+				  scrollbar: false,
+				  shade:  [0.5, "#393D49"],
+				  maxmin: false,
+				  area: ["868px", "588px"],
+				  content: url,
+				  cancel: function(index, layero){ 
+				  }    
+				});
+			}
+			</script>
+		<div id="vippaybtn" style="display:none"></div><script type="12221185148614d8afecd31e-text/javascript" src="source/plugin/it618_group/js/layer/layer.js"></script>
+		<script type="12221185148614d8afecd31e-text/javascript">			
+		jQuery(document).ready(function() {
+			
+		jQuery("#it618_group").click(function() {
+			layerindex=layer.open({
+			  type: 2,
+			  title: "<div style='float:left'><img src='source/plugin/it618_group/images/group.png' style='vertical-align:middle;margin-right:3px; margin-top:-4px; height:18px'>會員中心</div>",
+			  shadeClose: false,
+			  scrollbar: false,
+			  shade:  [0.5, "#393D49"],
+			  maxmin: false,
+			  area: ["868px", "588px"],
+			  content: "plugin.php?id=it618_group:uc",
+			  cancel: function(index, layero){ 
+			  }    
+			});
+		});
+		
+		});
+		</script>
+	
+
+<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="12221185148614d8afecd31e-|49" defer></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"d43149b261e442ef9e12401041a1df75","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
-
 </html>
